@@ -1,0 +1,58 @@
+* {
+    font-family: Tahoma
+}
+
+li {
+    list-style-type: square;
+}
+
+#cena {
+    color: orangered;
+    font-weight: bold;
+}
+
+.wstep {
+    font-style: italic;
+}
+
+td img:hover {
+    border-style: solid;
+    border-color: cornflowerblue;
+}
+
+h1 + h2 {
+    letter-spacing: 5px;
+}
+
+td[colspan="2"] p {
+    color: hotpink;
+    font-size: small;
+}
+
+p + p {
+    color: grey;
+}
+
+body {
+    margin: 5em 10em 5em 10em;
+    background-image: url(books.png);
+    background-repeat: repeat-y;
+    background-size: 100px;
+}
+
+h1 {
+    color: firebrick;
+}
+/*liczy sie ostatnia regu³a*/
+/*h1 {
+    color: firebrick;
+}*/
+
+b + span {
+    text-decoration: underline;
+}
+
+
+p {
+    text-align: justify
+}
