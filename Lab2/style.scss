@@ -1,0 +1,49 @@
+﻿body {
+}
+
+/*------------------responsivness------------------*/
+@media only screen and (max-width: 767px) {
+    main {
+        width: 100%;
+    }
+}
+
+@media only screen and ( min-width: 768px) and ( max-width: 1023px ) {
+    main {
+        width: 91.6%;
+    }
+}
+
+@media only screen and ( min-width: 1024px ) {
+    main {
+        width: 66.6%;
+    }
+}
+
+/*------------------header------------------*/
+header {
+}
+
+/*------------------main content------------------*/
+
+
+
+/*------------------grid------------------*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    background-color: #2196F3;
+    padding: 2px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+/*------------------footer------------------*/
