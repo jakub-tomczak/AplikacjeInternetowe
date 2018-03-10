@@ -1,29 +1,98 @@
-/*------------------responsivness------------------*/
-@media only screen and (max-width: 767px) {
-  main {
-    width: 100%; } }
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  main {
-    width: 91.6%; } }
-@media only screen and (min-width: 1024px) {
-  main {
-    width: 66.6%; } }
-/*------------------header------------------*/
-/*------------------main content------------------*/
+body {
+  min-width: 350px; }
+
 /*------------------grid------------------*/
 .grid-container {
   display: grid;
+  grid-gap: 10px;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: 10%, 80%, 10%;
   background-color: #2196F3;
   padding: 2px; }
 
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center; }
+/*------------------responsivness------------------*/
+@media only screen and (max-width: 767px) {
+  main {
+    width: 100%; }
+
+  .box {
+    background-color: azure;
+    color: black; }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: 10%, 80%, 10%;
+    background-color: #2196F3;
+    padding: 2px;
+    grid-template-areas: "header" "navigation" "first" "second" "third" "footer"; }
+
+  nav a {
+    display: none; }
+
+  #menuIcon {
+    display: block; } }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  main {
+    width: 91.6%; }
+
+  .box {
+    background-color: aquamarine;
+    color: black; }
+
+  .grid-container {
+    grid-template-areas: "header navigation" "first" "second third" "footer"; } }
+@media only screen and (min-width: 1024px) {
+  main {
+    width: 66.6%; }
+
+  .box {
+    background-color: burlywood;
+    color: white; }
+
+  .grid-container {
+    grid-template-areas: "header navigation" "first second third" "footer"; } }
+/*------------------header------------------*/
+header {
+  /*grid-area: 1 / 1 / 2 / 13;*/
+  /*row-s / column-s / row-e / column-e*/
+  grid-area: header; }
+
+/*------------------navgation------------------*/
+nav a {
+  text-decoration: none;
+  grid-area: navigation;
+  background-color: white;
+  color: black; }
+
+nav a:hover {
+  background-color: darkslategrey;
+  color: white; }
+
+#menuIcon {
+  width: 32px;
+  height: 32px;
+  display: none; }
+
+/*------------------main content------------------*/
+.box {
+  height: 40px;
+  width: 40px; }
+
+.fs-main {
+  grid-area: first;
+  /*grid-column: 1 / span 4;*/ }
+
+.sd-main {
+  grid-area: second;
+  /*grid-column: 5 / span 4;*/ }
+
+.td-main {
+  grid-area: third;
+  /*grid-column: 9 / span 4;*/ }
 
 /*------------------footer------------------*/
+footer {
+  grid-area: footer; }
 
 /*# sourceMappingURL=style.css.map */
