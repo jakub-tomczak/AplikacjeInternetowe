@@ -19,10 +19,17 @@ li {
     font-style: italic;
 }
 
-td img:hover {
-    border-style: solid;
+td img {
+    border-style: dotted;
     border-color: cornflowerblue;
+    width: 300px;
+    height: 350px;
 }
+
+    td img:hover {
+        border-style: solid;
+        border-color: red;
+    }
 
 h1 + h2 {
     letter-spacing: 5px;
@@ -31,6 +38,10 @@ h1 + h2 {
 td[colspan="2"] p {
     color: hotpink;
     font-size: small;
+}
+
+.grubo {
+    font-weight: bold;
 }
 
 p + p {
@@ -49,7 +60,7 @@ h1 {
 }
 /*liczy sie ostatnia regu³a*/
 /*h1 {
-    color: firebrick;
+    color: green;
 }*/
 
 b + span {
