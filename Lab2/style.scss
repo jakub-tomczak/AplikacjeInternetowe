@@ -1,31 +1,14 @@
 ﻿$default_padding: 15px;
 $default_margin: 20px;
-$box_size: 400px;
-
-* {
-    box-sizing: border-box;
-}
-body {
-    min-width: 500px !important;
-    width: auto !important;
-}
-
-/*------------------grid------------------*/
-
-.grid-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: stretch;
-    background-color: #2196F3;
-    padding: $default_padding;
-    color: aliceblue;
-}
+$box_margin: 20px 20px 20px 0px;
+$box_size: 300px;
+$primary_color: #6693B2;
+$secondary_color: #175A8B;
+$secondary_font_color: #F0F0F1;
 /*------------------responsivness------------------*/
 @media only screen and (max-width: 767px) {
     .grid-container {
-        background-color: #2196F3;
+        background-color: $primary_color;
         padding: $default_padding;
     }
 
@@ -33,21 +16,20 @@ body {
         order: 1;
         width: 100%;
     }
+
     main div {
         width: 80%;
     }
+
     .fs-main {
-        background-color: green;
         order: 3;
     }
 
     .sd-main {
-        background-color: yellow;
         order: 4;
     }
 
     .td-main {
-        background-color: black;
         order: 5;
     }
 
@@ -65,78 +47,123 @@ body {
 }
 
 @media only screen and ( min-width: 768px) and ( max-width: 1023px ) {
-    main {
-        width: 91.6%;
+
+    .grid-container {
+        justify-content:center;
     }
 
     .fs-main {
-        background-color: white;
         width: 100%;
-        order: 3;
+        order: 2;
     }
 
     .sd-main {
-        order: 4;
-        background-color: black;
+        width: 40%;
+        order: 3;
     }
 
     .td-main {
-        order: 5;
-        background-color: green;
+        width: 40%;
+        order: 3;
     }
 
     nav a {
         display: none;
     }
+
     .smallMenu {
         display: block;
     }
-
 }
 
 @media only screen and ( min-width: 1024px ) {
     main {
-        width: 66.6%;
         display: flex;
         flex-flow: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
+
     .fs-main {
-        background-color: yellow;
         order: 1;
     }
 
     .sd-main {
-        background-color: green;
         order: 1;
     }
 
     .td-main {
         order: 1;
-        background-color: black;
     }
 
-    .smallMenu{
+    .smallMenu {
         display: none;
     }
+}
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%; /*stretches web page over the browser height*/
+    position: relative;
+}
+
+
+/*------------------grid------------------*/
+
+.grid-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    background-color: #2196F3;
+    padding: $default_padding;
+    color: aliceblue;
 }
 
 /*------------------header------------------*/
 header {
-    background-color: bisque;
+    background-color: $secondary_color;
+    color: $secondary_font_color;
+    height: 100px;
+    width: 100%;
+    display: table;
+}
+
+h1 {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 4em;
 }
 
 /*------------------navgation------------------*/
+.links {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+}
+
 nav {
-    background-color: burlywood;
     width: auto;
+    float: right;
+    padding: 10px;
+    margin: 0px;
 }
 
 nav a {
     text-decoration: none;
-    grid-area: navigation;
     background-color: white;
     color: black;
+    padding: 20px;
 }
 
 nav a:hover {
@@ -145,20 +172,30 @@ nav a:hover {
 }
 
 img {
-    width: 32px;
-    height: 32px;
+    width: 64px;
+    height: 64px;
 }
 /*------------------main content------------------*/
-main div{
-    margin: $default_margin;
-    padding: $default_padding;
-    height: $box_size;
+main div {
     width: $box_size;
+    height: $box_size;
+    margin: $box_margin;
+    background-color: #C6C8C9;
+    text-align: center;
+    line-height: $box_size / 2;
+    font-size: 3em;
 }
 
 /*------------------footer------------------*/
 footer {
     text-align: center;
-    background-color: chartreuse;
-    height: 150px;
+    background-color: $secondary_color;
+    color: $secondary_font_color;
+    height: 75px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    margin: 10px;
+    padding: 10px;
 }
