@@ -1,45 +1,65 @@
-﻿body {
-    min-width: 350px;
+﻿$default_padding: 15px;
+$default_margin: 20px;
+$box_size: 400px;
+
+* {
+    box-sizing: border-box;
+}
+body {
+    min-width: 500px !important;
+    width: auto !important;
 }
 
 /*------------------grid------------------*/
 
 .grid-container {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-    grid-template-rows: 10%, 80%, 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: stretch;
     background-color: #2196F3;
-    padding: 2px;
+    padding: $default_padding;
+    color: aliceblue;
 }
-
 /*------------------responsivness------------------*/
 @media only screen and (max-width: 767px) {
+    .grid-container {
+        background-color: #2196F3;
+        padding: $default_padding;
+    }
+
     main {
+        order: 1;
         width: 100%;
     }
-    .box {
-        background-color: azure;
-        color: black;
+    main div {
+        width: 80%;
     }
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-        grid-template-rows: 10%, 80%, 10%;
-        background-color: #2196F3;
-        padding: 2px;
-        grid-template-areas:
-            "header"
-            "navigation"
-            "first"
-            "second"
-            "third"
-            "footer"
+    .fs-main {
+        background-color: green;
+        order: 3;
     }
+
+    .sd-main {
+        background-color: yellow;
+        order: 4;
+    }
+
+    .td-main {
+        background-color: black;
+        order: 5;
+    }
+
+    footer {
+        order: 5;
+    }
+
     nav a {
         display: none;
     }
-    #menuIcon{
+
+    .smallMenu {
         display: block;
     }
 }
@@ -48,79 +68,97 @@
     main {
         width: 91.6%;
     }
-    .box {
-        background-color: aquamarine;
-        color: black;
+
+    .fs-main {
+        background-color: white;
+        width: 100%;
+        order: 3;
     }
-    .grid-container {
-        grid-template-areas: 
-            "header navigation" 
-            "first" 
-            "second third" 
-            "footer"
+
+    .sd-main {
+        order: 4;
+        background-color: black;
     }
+
+    .td-main {
+        order: 5;
+        background-color: green;
+    }
+
+    nav a {
+        display: none;
+    }
+    .smallMenu {
+        display: block;
+    }
+
 }
 
 @media only screen and ( min-width: 1024px ) {
     main {
         width: 66.6%;
+        display: flex;
+        flex-flow: row;
     }
-    .box {
-        background-color: burlywood;
-        color: white;
+    .fs-main {
+        background-color: yellow;
+        order: 1;
     }
-    .grid-container {
-        grid-template-areas: 
-            "header navigation" 
-            "first second third" 
-            "footer"
+
+    .sd-main {
+        background-color: green;
+        order: 1;
     }
+
+    .td-main {
+        order: 1;
+        background-color: black;
+    }
+
+    .smallMenu{
+        display: none;
+    }
+
 }
 
 /*------------------header------------------*/
 header {
-    /*grid-area: 1 / 1 / 2 / 13;*/  /*row-s / column-s / row-e / column-e*/
-    grid-area: header;
+    background-color: bisque;
 }
 
 /*------------------navgation------------------*/
-nav a{
+nav {
+    background-color: burlywood;
+    width: auto;
+}
+
+nav a {
     text-decoration: none;
     grid-area: navigation;
     background-color: white;
     color: black;
 }
-nav a:hover{
+
+nav a:hover {
     background-color: darkslategrey;
     color: white;
 }
-#menuIcon{
+
+img {
     width: 32px;
     height: 32px;
-    display: none;
 }
 /*------------------main content------------------*/
-.box {
-    height: 40px;
-    width: 40px;
-}
-.fs-main {
-    grid-area: first;
-    /*grid-column: 1 / span 4;*/
-}
-
-.sd-main {
-    grid-area: second;
-    /*grid-column: 5 / span 4;*/
-}
-
-.td-main {
-    grid-area: third;
-    /*grid-column: 9 / span 4;*/
+main div{
+    margin: $default_margin;
+    padding: $default_padding;
+    height: $box_size;
+    width: $box_size;
 }
 
 /*------------------footer------------------*/
-footer
-{
-    grid-area: footer;
+footer {
+    text-align: center;
+    background-color: chartreuse;
+    height: 150px;
 }

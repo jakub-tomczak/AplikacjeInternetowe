@@ -2,32 +2,33 @@
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <title>Zaawansowany CSS</title>
     <link rel="stylesheet" type="text/css" href="style.css" title="Arkusz stylów CSS" />
-    <link rel="stylesheet" type="text/css" href="grid_style.css" title="Arkusz stylów CSS - siatka" />
 </head>
 <body>
     <div class="grid-container">
         <header>
-            Nagłówek strony
+            <h1>
+                Nagłówek strony
+            </h1>
+            <nav class="main-nav">
+                <a href="">Loreum</a>
+                <a href="">Ipsum</a>
+                <a href="">Dolor</a>
+                <a href="">Sit</a>
+                <a href="">Amet</a>
+                <img src="menu.png" class="smallMenu" />
+            </nav>
         </header>
 
-        <nav class="main-nav">
-            <a href="">Loreum</a>
-            <a href="">Ipsum</a>
-            <a href="">Dolor</a>
-            <a href="">Sit</a>
-            <a href="">Amet</a>
-            <img src="menu.png" id="menuIcon"/>
-        </nav>
 
         <main>
-            <div class="box fs-main">1</div>
+            <div class="fs-main">1</div>
 
-            <div class="box sd-main">5</div>
+            <div class="sd-main">5</div>
 
-            <div class="box td-main">9</div>
+            <div class="td-main">9</div>
         </main>
 
         <footer>
