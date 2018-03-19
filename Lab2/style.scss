@@ -1,40 +1,21 @@
 ﻿$default_padding: 15px;
 $default_margin: 20px;
-$box_margin: 20px 20px 20px 0px;
+$box_margin: 20px 0px 20px 0px;
 $box_size: 300px;
-$primary_color: #6693B2;
+$primary_color: #2196F3;
 $secondary_color: #175A8B;
 $secondary_font_color: #F0F0F1;
+$main_content_color: #25272A;
 /*------------------responsivness------------------*/
 @media only screen and (max-width: 767px) {
     .grid-container {
         background-color: $primary_color;
         padding: $default_padding;
+        justify-content: center;
     }
 
     main {
-        order: 1;
-        width: 100%;
-    }
-
-    main div {
-        width: 80%;
-    }
-
-    .fs-main {
-        order: 3;
-    }
-
-    .sd-main {
-        order: 4;
-    }
-
-    .td-main {
-        order: 5;
-    }
-
-    footer {
-        order: 5;
+        margin: auto;
     }
 
     nav a {
@@ -47,24 +28,26 @@ $secondary_font_color: #F0F0F1;
 }
 
 @media only screen and ( min-width: 768px) and ( max-width: 1023px ) {
-
-    .grid-container {
-        justify-content:center;
-    }
-
-    .fs-main {
+    main {
         width: 100%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .first{
+        width: 100%;
+        margin: 20px 0 20px 0;
+        order: 1;
+    }
+    .first .content{
+        top: 100px;
+    }
+
+    main div{
+        margin: auto;
         order: 2;
-    }
-
-    .sd-main {
-        width: 40%;
-        order: 3;
-    }
-
-    .td-main {
-        width: 40%;
-        order: 3;
     }
 
     nav a {
@@ -77,23 +60,21 @@ $secondary_font_color: #F0F0F1;
 }
 
 @media only screen and ( min-width: 1024px ) {
+    .grid-container {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
     main {
+        width: 100%;
         display: flex;
         flex-flow: row;
         flex-wrap: wrap;
         justify-content: space-between;
     }
 
-    .fs-main {
-        order: 1;
-    }
-
-    .sd-main {
-        order: 1;
-    }
-
-    .td-main {
-        order: 1;
+    main div{
+        margin: auto;
     }
 
     .smallMenu {
@@ -108,6 +89,8 @@ $secondary_font_color: #F0F0F1;
 html {
     min-height: 100%; /*stretches web page over the browser height*/
     position: relative;
+    padding: 2px;
+    background-color: $primary_color;
 }
 
 
@@ -119,12 +102,8 @@ html {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: space-around;
-    flex-direction: column;
     flex-wrap: wrap;
     align-content: stretch;
-    background-color: #2196F3;
     padding: $default_padding;
     color: aliceblue;
 }
@@ -133,6 +112,7 @@ html {
 header {
     background-color: $secondary_color;
     color: $secondary_font_color;
+    margin: auto;
     height: 100px;
     width: 100%;
     display: table;
@@ -167,7 +147,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: darkslategrey;
+    background-color: $primary_color;
     color: white;
 }
 
@@ -176,16 +156,43 @@ img {
     height: 64px;
 }
 /*------------------main content------------------*/
+main{
+    margin-bottom: 75px;    /*don't touch footer*/
+}
 main div {
     width: $box_size;
     height: $box_size;
     margin: $box_margin;
-    background-color: #C6C8C9;
-    text-align: center;
-    line-height: $box_size / 2;
-    font-size: 3em;
+    background-color: $secondary_color;
+    padding: 2px;
+    color: $secondary_font_color;
+    position: relative; /*set to enable children positioning*/
 }
 
+.bordered {
+    border: 2px solid;
+    border-color: $secondary_font_color;
+}
+
+.title {
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0px;
+    padding: 10px;
+    background-color: $main_content_color;
+    color: $secondary_font_color;
+}
+.content {
+    position: absolute;
+    top: 30px;
+    text-wrap: normal;
+    text-align: justify;
+    font-size: 14px;
+    padding: 10px;
+    overflow-y: no-display;
+}
 /*------------------footer------------------*/
 footer {
     text-align: center;
