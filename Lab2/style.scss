@@ -6,81 +6,6 @@ $primary_color: #2196F3;
 $secondary_color: #175A8B;
 $secondary_font_color: #F0F0F1;
 $main_content_color: #25272A;
-/*------------------responsivness------------------*/
-@media only screen and (max-width: 767px) {
-    .grid-container {
-        background-color: $primary_color;
-        padding: $default_padding;
-        justify-content: center;
-    }
-
-    main {
-        margin: auto;
-    }
-
-    nav a {
-        display: none;
-    }
-
-    .smallMenu {
-        display: block;
-    }
-}
-
-@media only screen and ( min-width: 768px) and ( max-width: 1023px ) {
-    main {
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .first{
-        width: 100%;
-        margin: 20px 0 20px 0;
-        order: 1;
-    }
-    .first .content{
-        top: 100px;
-    }
-
-    main div{
-        margin: auto;
-        order: 2;
-    }
-
-    nav a {
-        display: none;
-    }
-
-    .smallMenu {
-        display: block;
-    }
-}
-
-@media only screen and ( min-width: 1024px ) {
-    .grid-container {
-        justify-content: space-between;
-        flex-wrap: wrap;
-        flex-direction: row;
-    }
-    main {
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    main div{
-        margin: auto;
-    }
-
-    .smallMenu {
-        display: none;
-    }
-}
 
 * {
     box-sizing: border-box;
@@ -91,8 +16,8 @@ html {
     position: relative;
     padding: 2px;
     background-color: $primary_color;
+    min-width: $box_size;
 }
-
 
 /*------------------grid------------------*/
 
@@ -119,16 +44,17 @@ header {
 }
 
 h1 {
-    display: table-cell;
-    vertical-align: middle;
     padding: 10px;
     font-size: 4em;
 }
 
 /*------------------navgation------------------*/
-.links {
-    display: table-cell;
+.vertical_center {
     vertical-align: middle;
+    display: table-cell;
+}
+
+.links {
     padding: 10px;
 }
 
@@ -156,12 +82,12 @@ img {
     height: 64px;
 }
 /*------------------main content------------------*/
-main{
-    margin-bottom: 75px;    /*don't touch footer*/
+main {
+    margin-bottom: 75px; /*don't touch footer*/
 }
+
 main div {
-    width: $box_size;
-    height: $box_size;
+    height: $box_size + 50px;
     margin: $box_margin;
     background-color: $secondary_color;
     padding: 2px;
@@ -184,6 +110,7 @@ main div {
     background-color: $main_content_color;
     color: $secondary_font_color;
 }
+
 .content {
     position: absolute;
     top: 30px;
@@ -206,3 +133,90 @@ footer {
     margin: 10px;
     padding: 10px;
 }
+
+
+
+/*------------------responsivness------------------*/
+@media only screen and (max-width: 767px) {
+    .grid-container {
+        background-color: $primary_color;
+        padding: $default_padding;
+        justify-content: space-between;
+    }
+
+    main {
+        flex-grow: 1;
+    }
+
+    nav a {
+        display: none;
+    }
+    h1{
+        display: none !important;
+    }
+    .smallMenu {
+        display: block;
+    }
+}
+
+@media only screen and ( min-width: 768px) and ( max-width: 1023px ) {
+    main {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .first{
+        width: 100%;
+        margin: 20px 0 20px 0;
+    }
+    .first .content{
+        top: 100px;
+    }
+
+    main div {
+        flex-grow: 1;
+        margin-right: 20px;
+    }
+
+    main div:last-child {
+        margin-right: 0px !important;
+    }
+    nav a {
+        display: none;
+    }
+
+    .smallMenu {
+        display: block;
+    }
+}
+
+@media only screen and ( min-width: 1024px ) {
+    .grid-container {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    main {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    main div {
+        flex-grow: 1;
+        margin-right: 20px;
+    }
+    main div:last-child{
+        margin-right: 0px !important;
+    }
+
+    .smallMenu {
+        display: none;
+    }
+}
+
