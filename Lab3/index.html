@@ -3,33 +3,105 @@
 <head>
     <meta charset="utf-8" />
     <title>JavaScript</title>
-    <script src="form_check.js"> </script>
+    <script src="parsley.min.js"></script>
+    <script src="form_check.js"></script>
+    <style>
+        .err {
+            color: red;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+
+        .code_false {
+            color: red;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+
+        .code_true {
+            color: forestgreen;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+    </style>
 </head>
 <body>
+    <table class="table_colored">
+        <tbody>
+            <tr class="colored_row"><td>Wiersz 1</td></tr>
+            <tr><td>Wiersz 2</td></tr>
+            <tr><td>Wiersz 3</td></tr>
+            <tr><td>Wiersz 4</td></tr>
+            <tr><td>Wiersz 5</td></tr>
+            <tr><td>Wiersz 6</td></tr>
+            <tr><td>Wiersz 7</td></tr>
+        </tbody>
+    </table>
+    <button onclick="swapRows(this)" style="padding: 10px;">Zmień kolejność</button>
+
     <form name="dane_osobowe">
         <table>
-            <tr><td>Imię</td><td><input type="text" name="f_imie"></td></tr>
-            <tr><td>Nazwisko</td><td><input type="text" name="f_nazwisko"></td></tr>
+            <tr>
+                <td>Imię</td>
+                <td><input type="text" name="f_imie" class="string"></td>
+                <td><span class="err" id="e_imie" /></td>
+            </tr>
+            <tr>
+                <td>Nazwisko</td>
+                <td><input type="text" name="f_nazwisko" class="string"></td>
+                <td><span class="err" id="e_nazwisko" /></td>
+            </tr>
             <tr>
                 <td>Płeć</td>
                 <td>
-                    <input name="f_plec" value="f_k" checked type="radio" />kobieta<br />
-                    <input name="f_plec" value="f_m" type="radio" />mężczyzna
+                    <input name="f_plec" class="no_validation"  value="f_k" checked type="radio" onclick="showElement('NazwiskoPanienskie')" />kobieta<br />
+                    <input name="f_plec" class="no_validation" value="f_m" type="radio" onclick="hideElement('NazwiskoPanienskie')" />mężczyzna
                 </td>
             </tr>
-            <tr><td>N. panieńskie</td><td><input type="text" name="f_nazwisko_p"></td></tr>
-            <tr><td>E-mail</td><td><input type="text" name="f_email"></td></tr>
-            <tr><td>Kod pocztowy</td><td><input type="text" name="f_kod"></td></tr>
-            <tr><td>Ulica/Osiedle</td><td><input type="text" name="f_ulica"></td></tr>
-            <tr><td>Miasto</td><td><input type="text" name="f_miasto"></td></tr>
+            <tr>
+                <td>N. panieńskie</td>
+                <td>
+                    <span id="NazwiskoPanienskie">
+                        <input type="text" name="f_nazwisko_p" class="string">
+                    </span>
+                </td>
+                <td><span class="err" id="e_nazwisko_p" /></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="text" name="f_email" class="email"></td>
+                <td><span class="err" id="e_email" /></td>
+            </tr>
+            <tr>
+                <td>Kod pocztowy</td>
+                <td><input type="text" name="f_kod" onkeyup="checkZIPCodeRegEx(this, 'e_kod')" class="zip_code"></td>
+                <td><span class="err" id="e_kod" /></td>
+            </tr>
+            <tr>
+                <td>Ulica/Osiedle</td>
+                <td><input type="text" name="f_ulica" class="string"></td>
+                <td><span class="err" id="e_ulica" /></td>
+            </tr>
+            <tr>
+                <td>Miasto</td>
+                <td><input type="text" name="f_miasto" class="string"></td>
+                <td><span class="err" id="e_miasto" /></td>
+            </tr>
             <tr>
                 <td>Uwagi</td>
                 <td>
-                    <textarea rows="5" cols="15" name="uwagi"></textarea>
+                    <textarea rows="5" cols="15" name="uwagi"
+                        onkeyup="cnt(this.form.uwagi, document.getElementById('zostalo'), 150)">
+                    </textarea>
                 </td>
             </tr>
-            <tr><td colspan="2"><input type="submit" onclick="return validate(this.form);" value="Prześlij"></td></tr>
+            <tr>
+                <td>Pozostało <span id="zostalo">150</span> znaków</td>
+            </tr>
+            <tr><td colspan="2"><input type="button" onclick="return validate(this.form);" value="Prześlij"></td></tr>
         </table>
     </form>
+
+
 </body>
 </html>
