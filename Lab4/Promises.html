@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript"
+            src="jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+          
+        });
+        //alert($(this).val())
+        
+        $(function () {
+            var obj = $('input[type=text]')
+            obj.change(() => { obj.val()})
+            //$('input[type=text]').change(displayAlert)
+            $("button").on("click", () => { alert('some event') });    
+        })
+
+        function displayAlert() {
+            alert($('input[type=text]').val())
+        }
+        
+        const timeout = 3000
+        const work = time => new Promise((resolve) => {
+            console.log("Czekamy, aż coś się skończy...");
+            setTimeout(resolve, time);
+        });
+
+
+        work(timeout)
+            .then(res => {
+                console.log("Skończyło się. Teraz możemy zrobić rzecz nr 2.");
+                console.log("Czekamy, aż coś się skończy...");
+                return work(work(timeout));
+            })
+            .then(() => {
+                console.log("Skończyło się. Teraz możemy zrobić rzecz nr 3.");
+                return work(work(timeout));
+            })
+            .then(() => {
+                console.log("Skończyło się. Teraz możemy lecieć dalej.");
+            })
+
+    </script>
+</head>
+
+<body>
+    
+    <input type="text" value="Type an url" />
+    <button>Make a request</button>
+</body>
+</html>

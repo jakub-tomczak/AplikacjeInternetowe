@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JSON</title>
+    <script type="text/javascript"
+            src="jquery.min.js"></script>
+    <script>
+        //map - mutable
+        //each - immutable
+
+        //getJSON address, parameters, callback
+        $(function () {
+            $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
+                tags: "cars", format: "json"
+            }, function (data) {
+                $.each(data.items, function (i, item) {
+                    $('div').append($("<img/>").attr("src", item.media.m));
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

@@ -10,10 +10,22 @@
     <script type="text/javascript">
         function edit() {
             var row = $(this);
+            
             row.html('<input id="edit" value="' + row.html() + '">');
-          
+            var thisA = $('#edit')
+            $('#edit').blur( () => {
+                row.text(thisA.val());
+                row.one('click', edit);
+            }).focus(); //labmda powoduje, iż inputy znikają
+        }
+
+        function unbind() {
+            $('*').unbind();
+            //$('button').trigger('asdf')
         }
         $(function () {
+            $('button').bind('asdf', function () { alert('Asdf!'); });
+            
             $('td').one('click', edit);
         });
     </script>
@@ -24,10 +36,16 @@
     <table>
         <tr><td>Wlazł</td></tr>
         <tr><td>kotek</td></tr>
-        <tr><td><script>alert('!DANGER!')</script></td></tr>
+        <tr>
+            <td>
+                <script>alert('!DANGER!')</script>
+            </td>
+        </tr>
         <tr><td>...</td></tr>
     </table>
 
-    
+    <button type="button">Click Me!</button>
+
+    <input type="button" onclick="unbind()" value="trigger" />
 </body>
 </html>
