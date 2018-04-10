@@ -12,11 +12,12 @@
             var row = $(this);
             
             row.html('<input id="edit" value="' + row.html() + '">');
-            var thisA = $('#edit')
-            $('#edit').blur( () => {
-                row.text(thisA.val());
+            $('#edit').blur(
+                () => {
+                row.text($('#edit').val());
                 row.one('click', edit);
-            }).focus(); //labmda powoduje, iż inputy znikają
+                }
+            ).focus(); //labmda powoduje, iż inputy znikają
         }
 
         function unbind() {

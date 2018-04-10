@@ -7,43 +7,58 @@
     <script type="text/javascript"
             src="jquery.min.js"></script>
     <script>
+        //$(function () {
+        //    var obj = $('input[type=text]')
+        //    obj.change(() => { obj.val()})
+        //    //$('input[type=text]').change(displayAlert)
+        //    $("button").on("click", () => { alert('some event') });    
+        //})
 
-        $(document).ready(function () {
-          
-        });
-        //alert($(this).val())
-        
         $(function () {
-            var obj = $('input[type=text]')
-            obj.change(() => { obj.val()})
-            //$('input[type=text]').change(displayAlert)
-            $("button").on("click", () => { alert('some event') });    
+            $("button").on("click", createRequest)
+            $('input[type=text]').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    createRequest()
+                }
+            });
         })
 
-        function displayAlert() {
-            alert($('input[type=text]').val())
+        function createRequest() {
+            httpGet($('input[type=text]').val()).
+                then(setFrameContent, (errorMsg) => alert(errorMsg))
         }
-        
-        const timeout = 3000
-        const work = time => new Promise((resolve) => {
-            console.log("Czekamy, aż coś się skończy...");
-            setTimeout(resolve, time);
-        });
 
 
-        work(timeout)
-            .then(res => {
-                console.log("Skończyło się. Teraz możemy zrobić rzecz nr 2.");
-                console.log("Czekamy, aż coś się skończy...");
-                return work(work(timeout));
-            })
-            .then(() => {
-                console.log("Skończyło się. Teraz możemy zrobić rzecz nr 3.");
-                return work(work(timeout));
-            })
-            .then(() => {
-                console.log("Skończyło się. Teraz możemy lecieć dalej.");
-            })
+        function setContent(data) {
+            $("#fetchedContent").html(data)
+        }
+     
+
+        function httpGet(url) {
+            return new Promise(function (resolve, reject) {
+                var httpReq = new XMLHttpRequest();
+
+                httpReq.onload = function () {
+                    var data;
+
+                    if (httpReq.readyState == 4) {
+                        if (httpReq.status == 200) {
+                            data = httpReq.responseText;
+                            resolve(data);
+                        } else {
+                            reject(new Error(httpReq.statusText));
+                        }
+                    }
+                };
+
+                httpReq.onerror = function () {
+                    reject(new Error(`Cannot fetch data from ${url}`))
+                }
+
+                httpReq.open("GET", url, true);
+                httpReq.send();
+            });
+        }
 
     </script>
 </head>
@@ -52,5 +67,7 @@
     
     <input type="text" value="Type an url" />
     <button>Make a request</button>
+
+    <div id="fetchedContent"></div>
 </body>
 </html>
