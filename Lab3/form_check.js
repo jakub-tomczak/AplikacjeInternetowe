@@ -15,15 +15,6 @@ function isEmpty(str) {
 
 function validate(form) {
     var value = true
-    for (i = 0; i < form.length; i++) {
-        if (form[i].className.indexOf('string') >= 0) {
-            if(checkString(form.elements[], "Podaj imię!"))
-        } else if (form[i].className.indexOf('email') >= 0) {
-
-        } else if (form[i].className.indexOf('zip_code') >= 0) {
-
-        }
-    }
 
     value &= checkString(form.elements["f_imie"], "Podaj imię!")
     value &= checkString(form.elements["f_nazwisko"], "Podaj nazwisko!")
