@@ -25,7 +25,7 @@
 
         function createRequest() {
             httpGet($('input[type=text]').val()).
-                then(setFrameContent, (errorMsg) => alert(errorMsg))
+                then(setContent, (errorMsg) => alert(errorMsg))
         }
 
 
@@ -41,13 +41,12 @@
                 httpReq.onload = function () {
                     var data;
 
-                    if (httpReq.readyState == 4) {
                         if (httpReq.status == 200) {
                             data = httpReq.responseText;
                             resolve(data);
                         } else {
                             reject(new Error(httpReq.statusText));
-                        }
+                        
                     }
                 };
 
