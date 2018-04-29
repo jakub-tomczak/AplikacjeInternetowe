@@ -10,5 +10,7 @@ namespace SimpleMVC.Models
     {
         public MusicDbContext() : base("DefaultConnection") { }
         public DbSet<Song> Songs { get; set; }
+
+        public System.Data.Entity.DbSet<SimpleMVC.Models.Genre> Genres { get; set; }
     }
 }

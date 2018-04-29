@@ -18,11 +18,18 @@ namespace SimpleMVC
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Songs", action = "Index", id = UrlParameter.Optional }
             );
+
             routes.MapRoute(
                 name: "Default_Square",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Songs", action = "Square", id = 23 }
             );
+
+            //routes.MapRoute(
+            //    name: "Genre",
+            //    url: "{controller}/{action}",
+            //    defaults: new { controller = "Genre", action = "", id = 23 }
+            //);
 
             routes.MapRoute(
                 name: "Square",

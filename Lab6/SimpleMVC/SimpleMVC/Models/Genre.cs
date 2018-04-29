@@ -6,17 +6,15 @@ using System.Web;
 
 namespace SimpleMVC.Models
 {
-    public class Song
+    public class Genre
     {
+        private int id;
+        private string name;
+        private ICollection<Song> songs;
+
+        public ICollection<Song> Songs { get => songs; set => songs = value; }
         public string Name { get => name; set => name = value; }
-        public string Artist { get => artist; set => artist = value; }
-        public int GenreId { get => genreId; set => genreId = value; }
         [Key]
         public int Id { get => id; set => id = value; }
-
-        private string name;
-        private string artist;
-        private int genreId;
-        private int id;
     }
 }
