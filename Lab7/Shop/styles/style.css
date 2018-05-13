@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box; 
+}
+
+html {
+  min-height: 100%;
+  /*stretches web page over the browser height*/
+  position: relative;
+  padding: 2px;
+  background-color: green;
+  min-width: 300px; 
+}
+
+/*------------------grid------------------*/
+.grid-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  padding: 15px;
+  color: aliceblue; 
+}
+
+/*------------------header------------------*/
+header {
+  background-color: #175A8B;
+  color: #F0F0F1;
+  margin: auto;
+  height: 100px;
+  width: 100%;
+  display: table; 
+}
+
+h1 {
+  padding: 10px;
+  font-size: 4em; 
+}
+
+/*------------------navgation------------------*/
+.vertical_center {
+  vertical-align: middle;
+  display: table-cell; 
+}
+
+.links {
+  padding: 10px; 
+}
+
+nav {
+  width: auto;
+  float: right;
+  padding: 10px;
+  margin: 0px; 
+}
+
+nav a {
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  padding: 20px; 
+}
+
+nav a:hover {
+  background-color: #2196F3;
+  color: white; 
+}
+
+img {
+  width: 64px;
+  height: 64px; 
+}
+
+.button{
+  background: white;
+  color: #175A8B;
+  height: 50px;
+}
+
+.button:hover{
+  background-color: #2196F3;
+  color: white; 
+}
+
+
+/*------------------main content------------------*/
+main {
+  margin-bottom: 75px;
+  min-width: 400px;
+  /*don't touch footer*/ 
+}
+
+main>div {
+  height: 250px;
+  margin: 20px 0px 20px 0px;
+  background-color: #175A8B;
+  color: #F0F0F1;
+  position: relative;
+  max-width: 250px;
+  min-width: 230px;
+  padding: 10px;
+  padding-top: 40px;
+  /*set to enable children positioning*/ 
+}
+
+.first {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  margin: 20px 0 20px 0; 
+}
+
+.bordered {
+  border: 2px solid;
+  border-color: #F0F0F1; 
+}
+
+.title {
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0px;
+  padding: 15px;
+  color: #F0F0F1; 
+}
+
+.content {
+  position: absolute;
+  top: 30px;
+  text-wrap: normal;
+  text-align: justify;
+  font-size: 14px;
+  overflow-y: no-display; 
+}
+
+#add-item-to-basket-image{
+  height: 40px;
+  width: 40px;
+}
+
+/*------------------dialog modal------------------*/
+#dialog-modal
+{
+  display: none;
+}
+
+/*------------------basket------------------*/
+
+#basket {
+  overflow: auto;
+}
+/*------------------table------------------*/
+
+#basket-table{
+  padding: 50px;
+  width: 100%;
+}
+thead{
+  background: white;
+  color: #175A8B;
+}
+
+
+/*------------------footer------------------*/
+footer {
+  text-align: center;
+  background-color: #175A8B;
+  color: #F0F0F1;
+  height: 75px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  margin: 10px;
+  padding: 10px; 
+}
+
+/*------------------responsivness------------------*/
+@media only screen and (max-width: 767px) {
+  .grid-container {
+    background-color: #2196F3;
+    padding: 15px;
+    justify-content: space-between; 
+    flex-direction: row; 
+  }
+
+  main {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    flex-grow: 1; 
+  }
+
+  nav a {
+    display: none; 
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .smallMenu {
+    display: block; 
+  } 
+  }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  main {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+  }
+
+  .first .content {
+    top: 100px; 
+  }
+
+  main>div {
+    flex-grow: 1;
+    margin-right: auto; 
+  }
+
+  main>div:last-child {
+    margin-right: 0px !important; 
+  }
+
+  nav a {
+    display: none; }
+
+  .smallMenu {
+    display: block; 
+  } 
+  }
+@media only screen and (min-width: 1024px) {
+  .grid-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row; 
+    display: flex;
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+  }
+
+  main>div {
+    flex-grow: 1;
+  }
+
+  main>div:last-child {
+    margin-right: 0px !important; 
+  }
+
+  .smallMenu {
+    display: none; } 
+  }
+
