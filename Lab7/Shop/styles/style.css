@@ -7,7 +7,7 @@ html {
   /*stretches web page over the browser height*/
   position: relative;
   padding: 2px;
-  background-color: green;
+  background-color: #404040;
   min-width: 300px; 
 }
 
@@ -26,7 +26,7 @@ html {
 
 /*------------------header------------------*/
 header {
-  background-color: #175A8B;
+  background-color: #595959;
   color: #F0F0F1;
   margin: auto;
   height: 100px;
@@ -59,12 +59,12 @@ nav {
 nav a {
   text-decoration: none;
   background-color: white;
-  color: black;
+  color: #404040;
   padding: 20px; 
 }
 
 nav a:hover {
-  background-color: #2196F3;
+  background-color: #AED4D6;
   color: white; 
 }
 
@@ -75,28 +75,31 @@ img {
 
 .button{
   background: white;
-  color: #175A8B;
+  color: #404040;
   height: 50px;
+  width: 150px;
+  border: 0px;
 }
 
 .button:hover{
-  background-color: #2196F3;
+  background-color: #AED4D6;
   color: white; 
 }
 
 
 /*------------------main content------------------*/
 main {
+  /*don't touch footer*/ 
   margin-bottom: 75px;
   min-width: 400px;
-  /*don't touch footer*/ 
+  justify-content: space-evenly; 
 }
 
 main>div {
   height: 250px;
-  margin: 20px 0px 20px 0px;
-  background-color: #175A8B;
-  color: #F0F0F1;
+  margin: 40px 0px 40px 0px;
+  background-color: #595959;
+  color: #F2F2F2;
   position: relative;
   max-width: 250px;
   min-width: 230px;
@@ -157,17 +160,23 @@ main>div {
 #basket-table{
   padding: 50px;
   width: 100%;
+  text-align: center;
 }
 thead{
   background: white;
   color: #175A8B;
 }
 
+#basket-table-remove-img{
+  width:32px;
+  height:32px;
+}
+
 
 /*------------------footer------------------*/
 footer {
   text-align: center;
-  background-color: #175A8B;
+  background-color: #595959;
   color: #F0F0F1;
   height: 75px;
   position: absolute;
@@ -181,7 +190,6 @@ footer {
 /*------------------responsivness------------------*/
 @media only screen and (max-width: 767px) {
   .grid-container {
-    background-color: #2196F3;
     padding: 15px;
     justify-content: space-between; 
     flex-direction: row; 
@@ -191,7 +199,6 @@ footer {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between; 
     flex-grow: 1; 
   }
 
@@ -213,7 +220,6 @@ footer {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between; 
   }
 
   .first .content {
@@ -225,9 +231,9 @@ footer {
     margin-right: auto; 
   }
 
-  main>div:last-child {
+  /* main>div:last-child {
     margin-right: 0px !important; 
-  }
+  } */
 
   nav a {
     display: none; }
@@ -249,16 +255,15 @@ footer {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between; 
   }
 
   main>div {
     flex-grow: 1;
   }
 
-  main>div:last-child {
+  /* main>div:last-child {
     margin-right: 0px !important; 
-  }
+  } */
 
   .smallMenu {
     display: none; } 

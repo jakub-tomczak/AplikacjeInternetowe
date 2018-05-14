@@ -34,8 +34,8 @@
             
             if(empty($item))
             {
-                //if object from user was not found redirect to shop by GET
-                header("Location:shop.php");
+                //if object from user was not found, redirect to shop by GET
+                header("Location:index.php");
             }
                 
 
@@ -64,8 +64,11 @@
                 
             }
             else{
-                $item['quantity'] = 1;
-                $_SESSION[$basket_var][$item['id']]  = $item;
+                if($item['max_quantity'] > 0)
+                {
+                    $item['quantity'] = 1;
+                    $_SESSION[$basket_var][$item['id']]  = $item;
+                }
             }
 
 
@@ -73,7 +76,7 @@
             unset($_POST["item"]);
         }
         //GET to client
-        header("Location:shop.php");
+        header("Location:index.php");
     }
 ?>
 
@@ -101,8 +104,10 @@
             </h1>
             <div class="links vertical_center">
                 <nav class="main-nav">
-                    <a href="">Wyczyść koszyk</a>
-                    <img alt="menu" src="resources/menu.png" class="smallMenu" />
+                    <!-- <a href="">Wyczyść koszyk</a>
+                    <img alt="menu" src="resources/menu.png" class="smallMenu" /> -->
+                    <input type="button" name="clear-basket" class="button" onClick="send_request('clear', 'basket-list')" value="Wyczyść" />
+                    <input type="button" name="buy-basket" class="button" onClick="send_request('buy', 'basket-list')" value="Kup" />
                 </nav>
             </div>
         </header>
@@ -133,8 +138,6 @@
             <div id="basket" class="first bordered">
                 <div class="title bordered">
                     Koszyk
-                    <input type="button" name="clear-basket" class="button" onClick="send_request('clear', 'basket-list')" value="Wyczyść" />
-                    <input type="button" name="buy-basket" class="button" onClick="send_request('buy', 'basket-list')" value="Kup" />
                 </div>
                 <div id="basket-list">
                
@@ -163,7 +166,7 @@
             "           <td class=\"itemPrice-table\">".$basket_item["price"]." zł</td>\n".
             "           <td class=\"itemQuantity-table\">".$basket_item["quantity"]." </td>\n".
             "           <td class=\"itemQuantity-table\">".round($basket_item["quantity"]*$basket_item["price"], 2)." </td>\n".
-            "           <td><input type=\"button\" name=\"buy-basket\" class=\"button\" onClick=\"send_request('remove', '".$basket_item["id"]."')\" value=\"Usuń\" /></td>".
+            "           <td><img src=\"resources/delete.png\" id=\"basket-table-remove-img\" onClick=\"send_request('remove', '".$basket_item["id"]."')\" /></td>".
             "</tr>\n"; 
         endforeach;
     
@@ -183,7 +186,7 @@ foreach ($result as $v):
     {
         echo
         "<div class=\"bordered\">\n".
-        "   <form action=\"shop.php\" method=\"POST\">\n".
+        "   <form action=\"index.php\" method=\"POST\">\n".
         "       <input type=\"hidden\" name=\"name\" value=\"".$v["nazwa"]."\" />\n".
         "           <p class=\"title\"><input id=\"add-item-to-basket-image\" type=\"image\" name=\"submit\" src=\"resources/add.png\" border=\"0\" alt=\"Submit\" /></p>\n".
         "           <p class=\"content\">\n".

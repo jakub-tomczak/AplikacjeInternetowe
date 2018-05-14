@@ -5,7 +5,6 @@ function send_request(request, item){
         data:{"action" : request, "id" : item}
     }
     ).done((data) => {
-        alert(data)
         var it = '#'+item
         var data = JSON.parse(data)
         switch(request)
